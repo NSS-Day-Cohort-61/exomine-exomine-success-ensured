@@ -1,3 +1,6 @@
+import { Governors } from "./Governors.js"
+import { Facilities } from "./Facilities.js"
+
 document.addEventListener(
     "click",
     (event) => {
@@ -14,8 +17,9 @@ export const Exomine = () => {
         <div id="inventory">
             <div id="inventory__left">
                 <h3>Choose a Governor</h3>
-                    
+                    ${Governors()}
                 <h3>Choose a Facility</h3>
+                    ${Facilities()}
                     
             </div>
             <div id="inventory__right">
