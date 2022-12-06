@@ -1,7 +1,5 @@
 import { getGovernors, setCurrentGovernorId } from "./database.js";
 
-
-
 export const Governors = () => {
   const governors = getGovernors();
   let html = "<select name='governors' id='governor-select'><option disabled selected value='0'>Choose a Governor...</option>";

@@ -161,6 +161,11 @@ export const setCurrentGovernorId = (id) => {
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
+export const setCurrentFacilityId = (id) => {
+  database.currentFacilityId = id;
+  document.dispatchEvent(new CustomEvent("stateChanged"));
+};
+
 export const getFacilities = () => {
   return database.facilities.map((f) => ({ ...f }));
 };
@@ -174,7 +179,7 @@ export const getColonies = () => {
 };
 
 export const getGovernors = () => {
-  return database.governors.map((c) => ({ ...c }));
+  return database.governors.map((g) => ({ ...g }));
 };
 
 export const getFacilitiesMinerals = () => {
@@ -184,6 +189,10 @@ export const getFacilitiesMinerals = () => {
 export const getcurrentGovernorId = () => {
   return database.currentGovernorId;
 };
+
+export const getCurrentFacilityId = () => {
+    return database.currentFacilityId;
+  };
 
 export const getColoniesMinerals = () => {
   return database.coloniesMinerals.map((cm) => ({ ...cm }));
@@ -201,7 +210,7 @@ const objBuilder = () => {
   obj.id = database.coloniesMinerals.length + 1;
   obj.colonyId = randomIntBetween(1, 3);
   obj.mineralId = randomIntBetween(1, 6);
-  obj.mineralAmount = randomIntBetween(1, 7);
+  obj.mineralAmount = 1;
   return obj;
 };
 
