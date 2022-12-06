@@ -1,0 +1,22 @@
+#inventory {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#orders {
+    display: flex;
+    justify-content: space-between;
+}
+
+#inventory__left {
+    border: dotted 1px dodgerblue;
+}
+
+#orders__left {
+    border: dotted 1px dodgerblue;
+}
+
+#orders__right {
+    border: dotted 1px dodgerblue;
+}
