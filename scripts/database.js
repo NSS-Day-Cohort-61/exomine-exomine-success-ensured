@@ -166,6 +166,10 @@ export const getColonies = () => {
   return database.colonies.map((c) => ({ ...c }));
 };
 
+export const getGovernors = () => {
+    return database.governors.map((g) => ({...g}))
+}
+
 export const getFacilitiesMinerals = () => {
   return database.facilitiesMinerals.map((fm) => ({ ...fm }));
 };
