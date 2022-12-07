@@ -6,7 +6,7 @@ import {
   getFacilities,
   setCurrentMineralId,
   setSelectedFacilityMineral,
-  getSelectedFacilityMineral
+  getCurrentGovernorId,
 } from "./database.js";
 
 export const FacilityMinerals = (facilityId) => {
@@ -35,23 +35,29 @@ export const FacilityMinerals = (facilityId) => {
 };
 
 export const SelectedFacilityMineral = () => {
+  const governorId = getCurrentGovernorId();
   const facilityId = getCurrentFacilityId();
   const facilities = getFacilities();
   const mineralId = getCurrentMineralId();
   const minerals = getMinerals();
   let chosenMineralName;
   let chosenFacilityName;
-  for (const facility of facilities) {
-    if (facility.id === facilityId) {
-      chosenFacilityName = facility.name;
+  if(governorId !== 0 && facilityId !==0) {
+    for (const facility of facilities) {
+      if (facility.id === facilityId) {
+        chosenFacilityName = facility.name;
+      }
     }
-  }
-  for (const mineral of minerals) {
-    if (mineral.id === mineralId) {
-      chosenMineralName = mineral.name;
+    for (const mineral of minerals) {
+      if (mineral.id === mineralId) {
+        chosenMineralName = mineral.name;
+      }
     }
+    return `<div id="cart__contents">1 ton of ${chosenMineralName} from ${chosenFacilityName}</div>`;
   }
-  return `1 ton of ${chosenMineralName} from ${chosenFacilityName}`;
+  else {
+    return ``;
+  }  
 };
 
 document.addEventListener("change", (event) => {

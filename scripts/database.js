@@ -30,7 +30,7 @@ const database = {
     governorId: 0,
     facilityId: 0,
     mineralId: 0,
-    mineralAmount: 1,
+    mineralAmount: 1
   },
   minerals: [
     {
@@ -213,7 +213,7 @@ export const getColonies = () => {
 
 export const getGovernors = () => {
   return database.governors.map((g) => ({ ...g }));
-};
+}
 
 export const getFacilitiesMinerals = () => {
   return database.facilitiesMinerals.map((fm) => ({ ...fm }));
