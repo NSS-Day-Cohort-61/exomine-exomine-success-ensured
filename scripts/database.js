@@ -5,7 +5,17 @@ const database = {
       colonyId: 1,
       mineralId: 3,
       mineralAmount: 6,
-    },
+    }, {
+      id: 2,
+      colonyId: 2,
+      mineralId: 2,
+      mineralAmount: 1
+    }, {
+      id: 3,
+      colonyId: 3,
+      mineralId: 1,
+      mineralAmount: 4
+    }
   ],
   transientState: {},
   minerals: [
@@ -161,6 +171,10 @@ export const setCurrentGovernorId = (id) => {
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
+export const getCurrentGovernorId = () => {
+  return database.currentGovernorId
+}
+
 export const getFacilities = () => {
   return database.facilities.map((f) => ({ ...f }));
 };
@@ -195,20 +209,20 @@ export const purchaseMineral = () => {
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
-// Object builder functions
-const objBuilder = () => {
-  let obj = {};
-  obj.id = database.coloniesMinerals.length + 1;
-  obj.colonyId = randomIntBetween(1, 3);
-  obj.mineralId = randomIntBetween(1, 6);
-  obj.mineralAmount = randomIntBetween(1, 7);
-  return obj;
-};
+// //Object builder functions
+// const objBuilder = () => {
+//   let obj = {};
+//   obj.id = database.coloniesMinerals.length + 1;
+//   obj.colonyId = randomIntBetween(1, 3);
+//   obj.mineralId = randomIntBetween(1, 6);
+//   obj.mineralAmount = 1;
+//   return obj;
+// };
 
-const randomIntBetween = (num1, num2) => {
-  return Math.floor(Math.random() * num2) + num1;
-};
+// const randomIntBetween = (num1, num2) => {
+//   return Math.floor(Math.random() * num2) + num1;
+// };
 
-for (let i = 0; i < 9; i++) {
-  database.coloniesMinerals.push(objBuilder());
-}
+// for (let i = 0; i < 9; i++) {
+//   database.coloniesMinerals.push(objBuilder());
+// }
