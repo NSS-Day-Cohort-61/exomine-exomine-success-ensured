@@ -8,6 +8,14 @@
     justify-content: space-around;
 }
 
+#inventory__left {
+    padding: 10px
+}
+
+#inventory__right {
+    padding: 10px
+}
+
 #orders {
     display: flex;
     justify-content: space-around;
@@ -15,10 +23,10 @@
 
 #orders__left {
     border: dotted 1px dodgerblue;
-    padding: 10px
+    padding: 10px 40px;
 }
 
 #orders__right {
     border: dotted 1px dodgerblue;
-    padding: 10px
+    padding: 10px 40px;
 }

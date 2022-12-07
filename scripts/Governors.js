@@ -46,13 +46,15 @@ export const getCurrentColonyName = () => {
 }
 
 
-export const getColonyByGov = () => {
+export const getMineralByGov = () => {
   const currentGovId = getCurrentGovernorId();
   if(currentGovId === 0) {
     return "<h4>Choose a Governor to view his or her Colony's available Minerals</h4>"
   }
   else{
     let html = "<ul>"
+    let mineralCount = 0
+    let mineralName = ""
     for(const governor of governors) {
       if(governor.id === parseInt(currentGovId))
         for(const colony of colonies) {
@@ -61,11 +63,13 @@ export const getColonyByGov = () => {
               if(colonyMinerals.colonyId === colony.id) {
                 for(const mineral of minerals) {
                   if(mineral.id === colonyMinerals.mineralId) {
-                     html += `<li>${colonyMinerals.mineralAmount} tons of ${mineral.name}</li>`
+                    mineralCount += colonyMinerals.mineralAmount
+                    mineralName = mineral.name
                   }
                 }
               }
             }
+            html += `<li>${mineralCount} tons of ${mineralName}</li>`
           }
         }
     }
