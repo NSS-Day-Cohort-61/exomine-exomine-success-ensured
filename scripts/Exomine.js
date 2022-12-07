@@ -1,5 +1,7 @@
-import { Governors, getCurrentColonyName, getColonyByGov } from "./Governors.js"
-import { Facilities } from "./Facilities.js"
+import { Governors, getCurrentColonyName, getColonyByGov } from "./Governors.js";
+import { Facilities, getCurrentFacilityName } from "./Facilities.js";
+import { FacilityMinerals } from "./FacilityMinerals.js"
+import { getCurrentFacilityId } from "./database.js"
 
 document.addEventListener(
     "click",
@@ -31,12 +33,13 @@ export const Exomine = () => {
         </div>
         <div id="orders">
             <div id="orders__left">
-                <h2>Facility Minerals for FACILITYNAME</h2>
-
+                ${getCurrentFacilityName()}
+                ${FacilityMinerals(getCurrentFacilityId())}
+                
             </div>
             <div id="orders__right">
                 <h2>Space Cart</h2>
                 <button id="purchaseButton">Purchase Mineral</button>
             </div>
-        </div>`
-}
+        </div>`;
+};
