@@ -30,3 +30,7 @@
     border: dotted 1px dodgerblue;
     padding: 10px 40px;
 }
+
+#cart__contents {
+    padding: 0px 10px 10px 10px;
+}

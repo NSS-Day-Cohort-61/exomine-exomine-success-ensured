@@ -48,7 +48,7 @@ export const getSelectedFacilityMineral = () => {
         chosenMineralName = mineral.name;
       }
     }
-    return `1 ton of ${chosenMineralName} from ${chosenFacilityName}`;
+    return `<div id="cart__contents">1 ton of ${chosenMineralName} from ${chosenFacilityName}</div>`;
   }
   else {
     return ``;
