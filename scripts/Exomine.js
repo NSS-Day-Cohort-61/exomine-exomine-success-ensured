@@ -1,18 +1,23 @@
-import { Governors } from "./Governors.js";
+import { Governors, getCurrentColonyName, getColonyByGov } from "./Governors.js";
 import { Facilities, getCurrentFacilityName } from "./Facilities.js";
 import { FacilityMinerals } from "./FacilityMinerals.js"
 import { getCurrentFacilityId } from "./database.js"
 
-document.addEventListener("click", (event) => {
-  const itemClicked = event.target;
-  if (itemClicked.id === "purchaseButton") {
-    addCustomOrder();
-  }
-});
+document.addEventListener(
+    "click",
+    (event) => {
+        const itemClicked = event.target;
+        if(itemClicked.id === "purchaseButton") {
+            addCustomOrder();
+        }
+    }
+)
+
+
 
 export const Exomine = () => {
-  return `
-        <h1>Exomine</h1>
+    return `
+        <h1 id="main__header">Exomine</h1>
         <div id="inventory">
             <div id="inventory__left">
                 <h3>Choose a Governor</h3>
@@ -22,8 +27,8 @@ export const Exomine = () => {
                     
             </div>
             <div id="inventory__right">
-                <h2>{COLONYNAME Minerals}</h2>
-
+                ${getCurrentColonyName()}
+                ${getColonyByGov()}
             </div>
         </div>
         <div id="orders">
