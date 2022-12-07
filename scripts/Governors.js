@@ -1,9 +1,11 @@
+
 import { getColonies, getCurrentGovernorId, getColoniesMinerals, getGovernors, setCurrentGovernorId, getMinerals } from "./database.js";
 
 const governors = getGovernors();
 const colonies = getColonies();
 const coloniesMinerals = getColoniesMinerals();
 const minerals = getMinerals()
+
 
 export const Governors = () => {
   const currentGovId = getCurrentGovernorId()
