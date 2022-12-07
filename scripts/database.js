@@ -5,22 +5,25 @@ const database = {
       colonyId: 1,
       mineralId: 3,
       mineralAmount: 6,
-    }, {
+    },
+    {
       id: 2,
       colonyId: 2,
       mineralId: 2,
-      mineralAmount: 1
-    }, {
+      mineralAmount: 1,
+    },
+    {
       id: 3,
       colonyId: 3,
       mineralId: 1,
-      mineralAmount: 4
-    }, {
+      mineralAmount: 4,
+    },
+    {
       id: 4,
       colonyId: 3,
       mineralId: 1,
-      mineralAmount: 5
-    }
+      mineralAmount: 5,
+    },
   ],
   transientState: {
     id: 1,
@@ -168,9 +171,7 @@ const database = {
       mineralAmount: 7,
     },
   ],
-  currentGovernorId: 0,
-  currentFacilityId: 0,
-  currentMineralId: 0
+  selectedFacilityMineral: 0,
 };
 
 export const setFacility = (facilityId) => {
@@ -183,13 +184,18 @@ export const setCurrentGovernorId = (id) => {
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
-export const setCurrentMineralId = (id) => {
-  database.transientState.mineralId = id;
-  document.dispatchEvent(new CustomEvent("stateChanged"))
-}
-
 export const setCurrentFacilityId = (id) => {
   database.transientState.facilityId = id;
+  document.dispatchEvent(new CustomEvent("stateChanged"));
+};
+
+export const setCurrentMineralId = (id) => {
+  database.transientState.mineralId = id;
+  // document.dispatchEvent(new CustomEvent("stateChanged"));
+};
+
+export const setSelectedFacilityMineral = (id) => {
+  database.selectedFacilityMineral = id;
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
@@ -218,15 +224,19 @@ export const getCurrentGovernorId = () => {
 };
 
 export const getCurrentFacilityId = () => {
-    return database.transientState.facilityId;
-  };
+  return database.transientState.facilityId;
+};
 
-  export const getCurrentMineralId = () => {
-    return database.transientState.mineralId;
-  };
+export const getCurrentMineralId = () => {
+  return database.transientState.mineralId;
+};
 
 export const getColoniesMinerals = () => {
   return database.coloniesMinerals.map((cm) => ({ ...cm }));
+};
+
+export const getSelectedFacilityMineral = () => {
+  return database.selectedFacilityMineral;
 };
 
 export const purchaseMineral = () => {

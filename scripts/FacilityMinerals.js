@@ -7,6 +7,7 @@ import {
   setCurrentMineralId,
   setSelectedFacilityMineral,
   getCurrentGovernorId,
+  getSelectedFacilityMineral
 } from "./database.js";
 
 export const FacilityMinerals = (facilityId) => {
@@ -21,9 +22,13 @@ export const FacilityMinerals = (facilityId) => {
           foundMineral = mineral;
         }
       }
-      html += `<li>
-      <input type="radio" name="facility-mineral" value="${facilityMineral.id}"/>${facilityMineral.mineralAmount} tons of ${foundMineral.name}
-      </li>`;
+      html += "<li>";
+      let selectedFacilityMineral = getSelectedFacilityMineral();
+      if (selectedFacilityMineral === facilityMineral.id) {
+        html += `<input type="radio" name="facility-mineral" value="${facilityMineral.id}" checked/>${facilityMineral.mineralAmount} tons of ${foundMineral.name}</li>`;
+      } else {
+        html += `<input type="radio" name="facility-mineral" value="${facilityMineral.id}"/>${facilityMineral.mineralAmount} tons of ${foundMineral.name}</li>`;
+      }
     }
   }
   html += "</ul>";
@@ -57,9 +62,9 @@ export const SelectedFacilityMineral = () => {
 };
 
 document.addEventListener("change", (event) => {
-  
   if (event.target.name === "facility-mineral") {
     const facilityMineralId = event.target.value;
+    setSelectedFacilityMineral(parseInt(facilityMineralId));
     // const minerals = getMinerals();
     // let chosenMineralId;
     const facilitiesMinerals = getFacilitiesMinerals();
