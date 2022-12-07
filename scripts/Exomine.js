@@ -1,4 +1,4 @@
-import { Governors, getCurrentColonyName, getColonyByGov } from "./Governors.js"
+import { Governors, getCurrentColonyName, getMineralByGov } from "./Governors.js"
 import { Facilities } from "./Facilities.js"
 
 document.addEventListener(
@@ -26,7 +26,7 @@ export const Exomine = () => {
             </div>
             <div id="inventory__right">
                 ${getCurrentColonyName()}
-                ${getColonyByGov()}
+                ${getMineralByGov()}
             </div>
         </div>
         <div id="orders">
