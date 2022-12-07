@@ -1,3 +1,4 @@
+
 import { Governors, getCurrentColonyName, getColonyByGov } from "./Governors.js";
 import { Facilities, getCurrentFacilityName } from "./Facilities.js";
 import { FacilityMinerals } from "./FacilityMinerals.js"
@@ -28,7 +29,7 @@ export const Exomine = () => {
             </div>
             <div id="inventory__right">
                 ${getCurrentColonyName()}
-                ${getColonyByGov()}
+                ${getMineralByGov()}
             </div>
         </div>
         <div id="orders">
