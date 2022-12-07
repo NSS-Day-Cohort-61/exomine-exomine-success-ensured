@@ -1,5 +1,5 @@
 
-import { Governors, getCurrentColonyName, getColonyByGov } from "./Governors.js";
+import { Governors, getCurrentColonyName, getMineralByGov } from "./Governors.js";
 import { Facilities, getCurrentFacilityName } from "./Facilities.js";
 import { FacilityMinerals, getSelectedFacilityMineral } from "./FacilityMinerals.js"
 import { getCurrentFacilityId } from "./database.js"
