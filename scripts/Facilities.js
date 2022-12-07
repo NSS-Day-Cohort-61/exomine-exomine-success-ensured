@@ -1,6 +1,6 @@
 import {
   getFacilities,
-  getcurrentGovernorId,
+  getCurrentGovernorId,
   getCurrentFacilityId,
   setCurrentFacilityId,
 } from "./database.js";
@@ -8,7 +8,7 @@ import {
 const facilities = getFacilities();
 
 export const Facilities = () => {
-  const governorId = getcurrentGovernorId();
+  const governorId = getCurrentGovernorId();
   const facilityId = getCurrentFacilityId();
   let html;
   if (governorId === 0) {
