@@ -26,11 +26,11 @@ const database = {
     },
   ],
   transientState: {
-    id: 1,
     governorId: 0,
+    colonyId: 0,
     facilityId: 0,
     mineralId: 0,
-    mineralAmount: 1
+    mineralAmount: 1,
   },
   minerals: [
     {
@@ -184,6 +184,11 @@ export const setCurrentGovernorId = (id) => {
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
+export const setCurrentColonyId = (id) => {
+  database.transientState.colonyId = id;
+  document.dispatchEvent(new CustomEvent("stateChanged"));
+};
+
 export const setCurrentFacilityId = (id) => {
   database.transientState.facilityId = id;
   document.dispatchEvent(new CustomEvent("stateChanged"));
@@ -191,7 +196,7 @@ export const setCurrentFacilityId = (id) => {
 
 export const setCurrentMineralId = (id) => {
   database.transientState.mineralId = id;
-  // document.dispatchEvent(new CustomEvent("stateChanged"));
+  document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
 export const setSelectedFacilityMineral = (id) => {
@@ -213,7 +218,7 @@ export const getColonies = () => {
 
 export const getGovernors = () => {
   return database.governors.map((g) => ({ ...g }));
-}
+};
 
 export const getFacilitiesMinerals = () => {
   return database.facilitiesMinerals.map((fm) => ({ ...fm }));
@@ -240,7 +245,32 @@ export const getSelectedFacilityMineral = () => {
 };
 
 export const purchaseMineral = () => {
-  // Broadcast custom event to entire documement so that the
-  // application can re-render and update state
+  // const facilitiesMinerals = getFacilitiesMinerals();
+  const facilitiesMinerals = database.facilitiesMinerals;
+  for (let facilityMineral of facilitiesMinerals) {
+    if (facilityMineral.id === database.selectedFacilityMineral) {
+      facilityMineral.mineralAmount -= 1;
+    }
+  }
+
+  const newOrder = { ...database.transientState };
+
+  const lastIndex = database.coloniesMinerals.length;
+
+  newOrder.id = lastIndex + 1;
+
+  database.coloniesMinerals.push(newOrder);
+  console.log(database.coloniesMinerals)
+
+  database.selectedFacilityMineral = 0;
+
+  // database.transientState = {
+  //   governorId: 0,
+  //   colonyId: 0,
+  //   facilityId: 0,
+  //   mineralId: 0,
+  //   mineralAmount: 1,
+  // };
+
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };

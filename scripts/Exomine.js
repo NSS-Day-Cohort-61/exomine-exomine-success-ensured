@@ -2,14 +2,14 @@
 import { Governors, getCurrentColonyName, getMineralByGov } from "./Governors.js";
 import { Facilities, getCurrentFacilityName } from "./Facilities.js";
 import { FacilityMinerals, SelectedFacilityMineral } from "./FacilityMinerals.js"
-import { getCurrentFacilityId } from "./database.js"
+import { getCurrentFacilityId, purchaseMineral } from "./database.js"
 
 document.addEventListener(
     "click",
     (event) => {
         const itemClicked = event.target;
         if(itemClicked.id === "purchaseButton") {
-            addCustomOrder();
+            purchaseMineral();
         }
     }
 )
