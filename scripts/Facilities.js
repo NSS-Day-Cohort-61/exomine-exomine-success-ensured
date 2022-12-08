@@ -13,7 +13,6 @@ export const Facilities = () => {
   const facilityId = getCurrentFacilityId();
   let html;
   if (governorId === 0) {
-    // html = "<h4>Please choose a governor before choosing a facility</h4>";
     html = "<select disabled name='facilities' id='facility-select'><option disabled selected value='0'>Choose a facility...</option>";
   } else {
     html =
