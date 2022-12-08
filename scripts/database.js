@@ -35,7 +35,7 @@ const database = {
     colonyId: 0,
     facilityId: 0,
     mineralId: 0,
-    mineralAmount: 1
+    mineralAmount: 1,
   },
   minerals: [
     {
@@ -224,7 +224,7 @@ export const getColonies = () => {
 
 export const getGovernors = () => {
   return database.governors.map((g) => ({ ...g }));
-}
+};
 
 export const getFacilitiesMinerals = () => {
   return database.facilitiesMinerals.map((fm) => ({ ...fm }));
@@ -270,14 +270,6 @@ export const purchaseMineral = () => {
   database.coloniesMinerals.push(newOrder)
 
   database.selectedFacilityMineral = 0;
-
-  // database.transientState = {
-  //   governorId: 0,
-  //   colonyId: 0,
-  //   facilityId: 0,
-  //   mineralId: 0,
-  //   mineralAmount: 1
-  // }
 
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };

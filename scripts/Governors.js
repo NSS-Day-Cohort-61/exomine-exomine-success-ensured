@@ -7,8 +7,9 @@ const minerals = getMinerals()
 
 
 export const Governors = () => {
-  const currentGovId = getCurrentGovernorId()
-  let html = "<select name='governors' id='governor-select'><option disabled selected value='0'>Choose a Governor...</option>";
+  const currentGovId = getCurrentGovernorId();
+  let html =
+    "<select name='governors' id='governor-select'><option disabled selected value='0'>Choose a Governor...</option>";
   for (const governor of governors) {
     if (currentGovId === governor.id) {
       html += `<option selected value="${governor.id}">${governor.name}</option>`;
@@ -18,10 +19,10 @@ export const Governors = () => {
   }
   html += "</select>";
   return html;
-}
+};
 
 document.addEventListener("change", (event) => {
-  if (event.target.id === 'governor-select') {
+  if (event.target.id === "governor-select") {
     let clickedGovernorId = event.target.value;
     let clickedColony;
     let clickedGovernor;
@@ -38,7 +39,7 @@ document.addEventListener("change", (event) => {
     setCurrentGovernorId(parseInt(clickedGovernorId));
     setCurrentColonyId(clickedColony.id)
   }
-})
+});
 
 export const getCurrentColonyName = () => {
   const currentGovId = getCurrentGovernorId();

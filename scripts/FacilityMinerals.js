@@ -15,19 +15,21 @@ export const FacilityMinerals = (facilityId) => {
   const minerals = getMinerals();
   let html = "<ul class='facility-minerals'>";
   for (let facilityMineral of facilitiesMinerals) {
-    if (facilityMineral.facilityId === facilityId) {
-      let foundMineral;
-      for (const mineral of minerals) {
-        if (mineral.id === facilityMineral.mineralId) {
-          foundMineral = mineral;
+    if (facilityMineral.mineralAmount !== 0) {
+      if (facilityMineral.facilityId === facilityId) {
+        let foundMineral;
+        for (const mineral of minerals) {
+          if (mineral.id === facilityMineral.mineralId) {
+            foundMineral = mineral;
+          }
         }
-      }
-      html += "<li>";
-      let selectedFacilityMineral = getSelectedFacilityMineral();
-      if (selectedFacilityMineral === facilityMineral.id) {
-        html += `<input type="radio" name="facility-mineral" value="${facilityMineral.id}" checked/>${facilityMineral.mineralAmount} tons of ${foundMineral.name}</li>`;
-      } else {
-        html += `<input type="radio" name="facility-mineral" value="${facilityMineral.id}"/>${facilityMineral.mineralAmount} tons of ${foundMineral.name}</li>`;
+        html += "<li>";
+        let selectedFacilityMineral = getSelectedFacilityMineral();
+        if (selectedFacilityMineral === facilityMineral.id) {
+          html += `<input type="radio" name="facility-mineral" value="${facilityMineral.id}" checked/>${facilityMineral.mineralAmount} tons of ${foundMineral.name}</li>`;
+        } else {
+          html += `<input type="radio" name="facility-mineral" value="${facilityMineral.id}"/>${facilityMineral.mineralAmount} tons of ${foundMineral.name}</li>`;
+        }
       }
     }
   }
@@ -55,23 +57,18 @@ export const SelectedFacilityMineral = () => {
       }
     }
     return `<div id="cart__contents">1 ton of ${chosenMineralName} from ${chosenFacilityName}</div>`;
-  }
-  else {
+  } else {
     return ``;
-  }  
+  }
 };
 
 document.addEventListener("change", (event) => {
   if (event.target.name === "facility-mineral") {
     const facilityMineralId = event.target.value;
     setSelectedFacilityMineral(parseInt(facilityMineralId));
-    // const minerals = getMinerals();
-    // let chosenMineralId;
     const facilitiesMinerals = getFacilitiesMinerals();
     for (const facilityMineral of facilitiesMinerals) {
-      let tempMineralId = getCurrentMineralId();
       if (facilityMineral.id === parseInt(facilityMineralId)) {
-        // chosenMineralId = facilityMineral.mineralId;
         setCurrentMineralId(facilityMineral.mineralId);
       }
     }
