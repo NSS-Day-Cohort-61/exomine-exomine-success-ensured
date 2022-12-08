@@ -45,7 +45,7 @@ export const SelectedFacilityMineral = () => {
   const minerals = getMinerals();
   let chosenMineralName;
   let chosenFacilityName;
-  if (governorId !== 0 && facilityId !== 0) {
+  if(governorId !== 0 && facilityId !==0 && mineralId !==0) {
     for (const facility of facilities) {
       if (facility.id === facilityId) {
         chosenFacilityName = facility.name;

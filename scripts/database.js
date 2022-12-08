@@ -23,7 +23,12 @@ const database = {
       colonyId: 3,
       mineralId: 1,
       mineralAmount: 5,
-    },
+    }, {
+      id: 5,
+      colonyId: 1,
+      mineralId: 3,
+      mineralAmount: 2
+    }
   ],
   transientState: {
     governorId: 0,
@@ -172,6 +177,7 @@ const database = {
     },
   ],
   selectedFacilityMineral: 0,
+  selectedMineral: 0
 };
 
 export const setFacility = (facilityId) => {
@@ -245,32 +251,25 @@ export const getSelectedFacilityMineral = () => {
 };
 
 export const purchaseMineral = () => {
-  // const facilitiesMinerals = getFacilitiesMinerals();
+
   const facilitiesMinerals = database.facilitiesMinerals;
-  for (let facilityMineral of facilitiesMinerals) {
+  for (const facilityMineral of facilitiesMinerals) {
     if (facilityMineral.id === database.selectedFacilityMineral) {
-      facilityMineral.mineralAmount -= 1;
+      if(facilityMineral.mineralAmount > 0) {
+        facilityMineral.mineralAmount -= 1;
+      }
     }
   }
 
   const newOrder = { ...database.transientState };
 
-  const lastIndex = database.coloniesMinerals.length;
+  const lastIndex = database.coloniesMinerals.length
 
   newOrder.id = lastIndex + 1;
 
-  database.coloniesMinerals.push(newOrder);
-  console.log(database.coloniesMinerals)
+  database.coloniesMinerals.push(newOrder)
 
   database.selectedFacilityMineral = 0;
-
-  // database.transientState = {
-  //   governorId: 0,
-  //   colonyId: 0,
-  //   facilityId: 0,
-  //   mineralId: 0,
-  //   mineralAmount: 1,
-  // };
 
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
